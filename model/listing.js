@@ -3,19 +3,28 @@ const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
     title: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
-    description:String,
+
+    description: String,
+
     image: {
-        type:String,
-        default: "abhhdhbdh",
-        set : (v) => v === "" ? "default link" : v,
+        filename: {
+            type: String,
+            default: "listingimage"
+        },
+        url: {
+            type: String,
+            default: "default link"
+        }
     },
-    price:Number,
-    location:String,
-    country:String
+
+    price: Number,
+    location: String,
+    country: String
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
+
 module.exports = Listing;
